@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Analog-Clock</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 100VW;
+			height: 100Vh;
+			background-image: linear-gradient(180deg, orange, yellowgreen);
+
+			
+		}
+		.clock-container{
+			width:40vw;
+			height: 40vw;
+			/*border:1px solid red;*/
+			background-image: url(clock.png);
+			background-size: 100%;
+			background-repeat: no-repeat;
+			position: relative;
+			z-index: -1;
+			margin-top: 0px;
+		}
+		.hour, .minute, .second{
+			
+			background-color: black;
+			position: absolute;
+			transform-origin: bottom;
+		}
+		.hour{
+            
+			width: 2%;
+            height: 25%;
+            top: 24%;
+            left: 48.4%;
+			/*display: none;*/
+		}
+		.minute{
+            width: 1.5%;
+            height: 30%;
+            top: 20%;
+            left: 48.7%;
+			/*display: none;*/
+		}
+		.second{
+            width: 1%;
+            height: 33%;
+            top: 17%;
+            left: 49%;
+			/*display: none;*/
+		}
+		@media screen and (max-width: 600px){
+			body{
+				background-image: linear-gradient(180deg, orange, yellowgreen);
+			}
+			.clock-container{
+				width: 80vw;
+			    height: 80vw;
+			    margin-top: 25px;
+			}
+		}
+		
+	</style>
+</head>
+<body>
+	<div class="clock-container">
+		<div class="hour">
+			
+		</div>
+		<div class="minute">
+			
+		</div>
+		<div class="second">
+			
+		</div>
+	</div>
+</body>
+
+     <script>
+     	function clock(argument) {
+     		
+     	let hour = document.querySelector('.hour')
+     	let minute = document.querySelector('.minute')
+     	let second = document.querySelector('.second')
+
+     	let d = new Date();
+     	
+     	let hTime = d.getHours();
+     	let mTime = d.getMinutes();
+     	let sTime = d.getSeconds();
+
+     	let hRotation = hTime*30 + mTime*0.5;
+     	let mRotation = mTime*6;
+     	let sRotation = sTime*6;
+     	
+     	hour.style.transform = `rotate(${hRotation}deg)`;
+     	minute.style.transform = `rotate(${mRotation}deg)`;
+     	second.style.transform = `rotate(${sRotation}deg)`;
+
+     }
+
+     setInterval(clock, 1000);
+     </script>
+
+</html>
+     	
+     	
